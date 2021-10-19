@@ -9,4 +9,4 @@
   <link rel="stylesheet" href="<?= site_url()?>dist/css/main.css">
   <title>Document</title>
 </head>
-<body> 
+<body id="body"> 

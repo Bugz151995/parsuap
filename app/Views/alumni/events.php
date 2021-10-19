@@ -1,59 +1,14 @@
-<main id="__main-content" class="p-4">
-  <div class="container">
-    <h1>EVENTS PAGE</h1>
-  </div>  
-<!-- website events -->
-  <section class="illustration edgeless shadow mb-4">
-    <div class="row row-cols-1 row-cols-md-4 g-3">
-      <div class="col">
-        <div class="card h-100">
-        <img src="<?= site_url()?>dist/images/3966983.jpg" class="d-block w-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">PSU 20th Commencement Exercises</h5>
-            <p class="card-text">The Graduates of 2021: Championing Education amidst the new Normal (August 15,2021)</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-        <img src="<?= site_url()?>dist/images/3966983.jpg" class="d-block w-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">20th Commencement Exercises | Baccalaureate Mass</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-        <img src="<?= site_url()?>dist/images/3966983.jpg" class="d-block w-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">2021 Virtual Moving-Up and Graduation Ceremonies – ParSU Laboratory High School</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-        <img src="<?= site_url()?>dist/images/3966983.jpg" class="d-block w-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">PARTIDO STATE UNIVERSITY-WIDE VIRTUAL FLAG LOWERING CEREMONY </h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
+<main id="__main-content">
+  <!-- breadcrumbs -->
+  <section class="container py-4 px-5">
+    <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='9'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><i class="fas fa-home fa-fw me-1"></i></li>
+        <li class="breadcrumb-item"><a href="<?= site_url()?>home" class="link-dark text-decoration-none">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Events</li>
+      </ol>
+    </nav>
   </section>
-</div>
+
+
 </main>

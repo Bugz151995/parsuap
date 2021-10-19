@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Member');
+$routes->setDefaultController('Alumni');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -32,15 +32,15 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->group('/', function($routes){
-    $routes->get('home', 'Home::index');
-    $routes->get('events', 'Event::index');
-    $routes->get('friends', 'Friend::index');
-    $routes->get('archive', 'Archive::index');
-    $routes->get('forum', 'Forum::index');
-    $routes->get('account', 'Account::index');
+    $routes->get('home', 'Home::index', ['filter' => 'alumni_auth']);
+    $routes->get('events', 'Event::index', ['filter' => 'alumni_auth']);
+    $routes->get('friends', 'Friend::index', ['filter' => 'alumni_auth']);
+    $routes->get('archive', 'Archive::index', ['filter' => 'alumni_auth']);
+    $routes->get('forum', 'Forum::index', ['filter' => 'alumni_auth']);
+    $routes->get('account', 'Account::index', ['filter' => 'alumni_auth']);
 
-    $routes->post('login', 'Member::login');
-    $routes->get('(:segment)', 'Member::view/$1', ['filter' => 'auth']);
+    $routes->post('login', 'Alumni::login');
+    $routes->get('logout', 'Alumni::logout');
 });
 
 /*

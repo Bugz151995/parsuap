@@ -2,11 +2,11 @@
 
 namespace App\Validation;
 
-use App\Models\MemberModel;
+use App\Models\AlumniModel;
 
 class LoginRules {
   public function verify_user(string $str, string $fields, array $data) : bool {
-    $account_model = new MemberModel();
+    $account_model = new AlumniModel();
 
     $user = $account_model->where('email', $data['email'])
                           ->first();

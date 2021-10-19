@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\MemberModel;
+use App\Models\AlumniModel;
 
 class Event extends BaseController {
     public function index() {

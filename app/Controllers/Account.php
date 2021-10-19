@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\MemberModel;
+use App\Models\AlumniModel;
 
 class Account extends BaseController {
     public function index() {

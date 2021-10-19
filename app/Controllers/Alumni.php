@@ -2,27 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Models\MemberModel;
+use App\Models\AlumniModel;
 
-class Member extends BaseController {
+class Alumni extends BaseController {
     public function index() {
         session()->destroy();
         helper('form');
 
         echo view('templates/header');
         echo view('alumni/login');
-        echo view('templates/end_document');
-    }
-
-    public function view($page = NULL) {
-        if ($page === NULL) {
-            echo view('templates/header');
-            echo view('alumni/home');
-            echo view('templates/end_document');
-        }
-        echo view('templates/header');
-        echo view('templates/topnavbar');
-        echo view('alumni/'.$page);
         echo view('templates/end_document');
     }
 
@@ -37,13 +25,13 @@ class Member extends BaseController {
             echo view('templates/end_document');    
         } else {
             $data['email'] = esc($this->request->getPost('email'));
-            $u_model = new MemberModel();
+            $u_model = new AlumniModel();
             $data = $u_model->select('*')
                             ->where($data)
                             ->get()->getRowArray();
             
             session()->set($data);
-            session()->setTempdata('islogged_in', TRUE, 43200);
+            session()->setTempdata('alumni_is_loggedin', TRUE, 43200);
             return redirect()->to('home');
         }
 

@@ -12,7 +12,7 @@ class AuthFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(!session()->get('islogged_in')) {
+        if(!session()->get('alumni_is_loggedin')) {
           return redirect()->to('/');
         }
     }
