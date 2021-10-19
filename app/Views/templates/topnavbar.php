@@ -9,7 +9,7 @@
         <div class="col-12 d-flex justify-content-center align-items-center">
           <div class="small text-center mt-3">
 
-            <h6 class="align-middle text-dark small fw-bold mb-0">
+            <h6 class="align-middle text-dark small fw-bold mb-1">
               <i class="fas fa-user-circle fa-fw"></i>
               <?= session()->get('firstname') ?>
 
@@ -19,9 +19,8 @@
 
               <?= session()->get('lastname') ?>
             </h6>
-
-            <span class="badge bg-success small">Alumni @ <?= session()->get('year_graduated')?></span>
             <h6 class="align-middle small text-dark"><i class="fas fa-circle text-success fa-fw fa-xs"></i> <span class="small">Online</span></h6>
+            <span class="badge bg-primary small">Alumni @ <?= session()->get('year_graduated')?></span>
           </div>
         </div>
       </div>

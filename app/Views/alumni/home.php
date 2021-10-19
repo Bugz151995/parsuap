@@ -1,12 +1,14 @@
 <main id="__main-content">
   <div id="__home_bg">
     <div class="container p-5">
-      <div class="display-5 fw-bold text-light mb-4 text-center text-lg-start">
-        Welcome to Partido State University Alumni Portal
+      <div class="my-5 py-5">
+        <div class="display-5 fw-bold text-light mb-4 text-center text-lg-start">
+          Welcome to Partido State University Alumni Portal
+        </div>
+        <h6 class="lead text-light">
+          Our Alma Matter Provides us with a portal where graduates of Partido State University is enabled to interact with each other and review dissertations through the forum.
+        </h6>
       </div>
-      <h6 class="lead text-light">
-        Our Alma Matter Provides us with a portal where graduates of Partido State University is enabled to interact with each other and review dissertations through the forum.
-      </h6>
     </div>
   </div>
 
