@@ -71,8 +71,11 @@
                 <input type="submit" value="Search" class="btn btn-outline-light btn-sm">
               </div>
             </div>
-            <!-- searchbar toggle for small screen -->
-            <button type="button" id="__search_sm_toggle_btn" class="btn btn-outline-light btn-sm d-block d-sm-none">Search</button>
+          </div>
+
+          <!-- searchbar toggle for small screen -->
+          <div class="col-auto d-flex align-items-center d-block d-sm-none">
+            <button type="button" id="__search_sm_toggle_btn" class="btn btn-outline-light btn-sm d-block d-sm-none dropdown-toggle">Search</button>
           </div>
 
           <div class="col-auto d-flex align-items-center">
@@ -108,7 +111,7 @@
   </div>
 
   <!-- small screen searchbar -->
-  <div id="search_sm" class="d-block d-sm-none">
+  <div id="search_sm" class="d-block d-sm-none shadow">
     <div id="search_sm_transparent_bg" class="py-4">
       <div class="container">
         <div class="row justify-content-center">

@@ -4,5 +4,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
   <script src="<?= site_url()?>dist/js/toggle_sidebar.js"></script>
   <script src="<?= site_url()?>dist/js/toggle_searchbar.js"></script>
+  <script src="<?= site_url()?>dist/js/create_post_autoresize.js"></script>
+  <script src="<?= site_url()?>dist/js/preview_image.js"></script>
 </body>
 </html>
