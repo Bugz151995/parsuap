@@ -21,4 +21,49 @@
       </ol>
     </nav>
   </section>
+  <!-- My Account -->
+  <section class="mb-4 bg-white">
+    <div class="p-5 row align-items-center">
+      <div class="col-auto">
+        <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#createPost" data-bs-whatever="@mdo">Create Post</button>
+      </div>  
+    </div>
+     
+    <div class="modal fade" id="createPost" tabindex="-1" aria-labelledby="createPostLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          <div class="col-auto">
+             <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+             <label for="message-text" class="col-form-label">Ryan Czar Abugao</label>
+             <span class="badge bg-success small">Public</span>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">What's on your mind?</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+             <div class="mb-1">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="col-auto">
+                    <i class="fas fa-camera"></i>
+                    <h7 class="modal-title" id="createPostLabel">Photos/Videos</h7>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
