@@ -1,9 +1,0 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
-
-:root {
-  --headings-font: 'Playfair Display', serif;
-  --form-font: 'Arvo', serif;
-  --footer-font: 'Arvo', serif;
-  --sidebar-font: 'Arvo', serif;
-}
