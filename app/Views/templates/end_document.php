@@ -3,6 +3,6 @@
   <!-- font awesome icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
   <script src="<?= site_url()?>dist/js/toggle_sidebar.js"></script>
-  <script src="<?= site_url()?>dist/js/toggle_search.js"></script>
+  <script src="<?= site_url()?>dist/js/toggle_searchbar.js"></script>
 </body>
 </html>
