@@ -1,0 +1,153 @@
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-brand {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.school-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.img-footer {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+#__login-wrapper {
+  height: calc(90vh - 106px);
+}
+
+#__login-form {
+  height: calc(100% - 106px);
+}
+
+.login-form-border {
+  border-color: #e5bd20;
+}
+
+#__login-topnavbar {
+  background-color: #000080;
+  margin-bottom: 5.5rem;
+}
+
+.topnavbar {
+  background: linear-gradient(to left, #000080, #2c2cf0);
+}
+
+#__login-title {
+  font-family: var(--headings-font);
+}
+
+#__login-title-divider {
+  color: #e5bd20;
+}
+
+.school-name {
+  font-family: var(--headings-font);
+}
+
+.form-title {
+  font-family: var(--headings-font);
+}
+
+.form-field {
+  font-family: var(--form-font);
+}
+
+.form-btn {
+  font-family: var(--form-font);
+}
+
+.footer > div{
+  font-family: var(--footer-font);
+}
+
+.user-profile {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* SIDEBAR */
+#__sidebar-toggle-icon {
+  transition: 0.5s ease-in-out;
+}
+
+#__sidebar {
+  font-family: var(--sidebar-font);
+  width: 280px;
+  position: fixed;
+  background-color: #ffffff;
+  top: 65px;
+  left: -280px;
+  height: calc(100vh - 65px);
+  z-index: 1010;
+  transition: 0.25s ease-in-out;
+}
+
+#__sidebar-background {
+  height: calc(100vh - 50px);
+  width: 100%;
+  position: fixed;
+  background-color: #2d2e2e67;
+  top: 65px;
+  left: 0;
+  z-index: 901;
+}
+
+#__main-content {
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 65px;
+}
+
+#__topnavbar {
+  height: 65px;
+}
+
+#search {
+  display: none;
+  transition: display 0.5s ease-in-out;
+}
+
+@media only screen and (min-width: 992px) {
+  #__sidebar {
+    font-family: var(--sidebar-font);
+    width: 280px;
+    position: fixed;
+    background-color: #ffffff;
+    top: 65px;
+    left: 0px;
+    height: calc(100vh - 65px);
+    z-index: 1010;
+  }
+
+  #__main-content {
+    position: relative;
+    width: calc(100% - 280px);
+    left: 280px;
+    top: 65px;
+  }
+
+  #search {
+    display: block;
+    transition: display 0.5s ease-in-out;
+  }
+}
+
+#__home_bg {
+  background-image: linear-gradient(to bottom, rgba(13,110,253, 0.7), rgba(13,110,253, 0.5)), url("http://parsuap.ph/dist/images/psu_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
