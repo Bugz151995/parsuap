@@ -13,7 +13,7 @@
   </div>
 
   <!-- breadcrumb -->
-  <section class="container py-4 px-5">
+  <section class="container py-4 px-4 px-lg-5">
     <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='9'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><i class="fas fa-home fa-fw me-1"></i></li>
@@ -27,20 +27,29 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-        <div class="col-auto row align-items-center">
-          <div class="col-auto">
-            <img src="<?= site_url()?>dist/images/63457.png" style="width: 60px; height: 60px: object-fit: contain" alt=""> 
-          </div>
-          <div class="col-auto">
-            <div class="d-flex flex-column">
-              <label for="message-text" class="col-form-label fw-bold small">Ryan Czar Abugao</label>
+          <div class="col-auto row align-items-center">
+            <div class="col-auto">
+              <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
             </div>
-          </div>
+            <div class="col-auto">
+              <div class="d-flex flex-column">
+                <label for="message-text" class="fw-bold">
+                  <?= session()->get('firstname') ?>
+
+                  <?php if(session()->get('middlename')): ?>
+                    <?= substr(session()->get('middlename'), 0, 1).'.' ?>
+                  <?php endif ?>
+
+                  <?= session()->get('lastname') ?>
+                </label>
+                <span class="fst-italic">Create New Post</span>
+              </div>
+            </div>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <!-- create post form -->
-        <?= form_open() ?>
+        <?= form_open('create_post') ?>
           <?= csrf_field() ?>
         <div class="modal-body">
           <div class="mb-3">
@@ -48,7 +57,7 @@
             <textarea class="form-control" name="desc" style="resize: none; height: auto" id="post"></textarea>
           </div>
           <div class="mb-3">
-            <img src="https://dummyimage.com/400x400/6ca7fa/3341ff&text=Image+Preview" alt="" id="img_preview" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover">
+            <img src="https://dummyimage.com/400x400/8a8a8a/b5b5b5&text=Image+Preview" alt="" id="img_preview" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover">
           </div>
           <div class="mt-5">
             <div class="d-flex justify-content-between align-items-center">
@@ -70,7 +79,7 @@
   </div>
 
   <!-- Create post trigger -->
-  <section class="mb-5 pt-4 bg-white">
+  <section class="mb-4 pt-4 bg-white">
     <div class="container">
       <div class="row justify-content-center align-items-center">
         <div class="col-10 col-lg-7 rounded rounded-3 p-3 alert-primary shadow-sm">
@@ -91,25 +100,92 @@
 
   <!-- list of post latest to old -->
   <section class="mb-5">
-    <div class="container p-5">
+    <div class="container p-4 px-lg-5">
       <div class="row g-3 justify-content-center">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-10">
           <div class="card mb-3 border-0 shadow-sm">
             <img src="https://dummyimage.com/600x400/8a8a8a/b5b5b5" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">
+              <h5 class="card-title h6">
                 <i class="fas fa-user-circle fa-fw me-2"></i>
                 <!-- alumni's name who created the post -->
                 <?= "alumni's name" ?>
               </h5>
               <p class="card-text">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta quia deserunt, excepturi fugit voluptate nulla.
-              </p>
-              <p class="card-text">
                 <small class="text-muted">
-                  <i class="fas fa-clock fa-fw me-2"></i>Last updated 3 mins ago
+                  <i class="fas fa-clock fa-fw me-2"></i>
+                  <!-- humanized time -->
+                  <?= "Last updated 3 mins ago" ?>
                 </small>
               </p>
+              <p class="card-text small">
+                <!-- post description -->
+                <?= "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta quia deserunt, excepturi fugit voluptate nulla." ?>
+              </p>
+            </div>
+            
+            <!-- comment section displays only 5 latest comments for performance -->
+            <div class="border-top accordion accordion-flush" id="commentsAcc">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <span class="small">
+                      <i class="far fa-comments me-2"></i> Comments
+                    </span>
+                  </button>
+                </h2>
+
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#commentsAcc">
+                  <div class="accordion-body p-0">
+                    <!-- comment -->
+                    <div class="card border-0 mb-3 px-3">
+                      <div class="row g-3">
+                        <!-- user profile -->
+                        <div class="col-2 d-flex justify-content-center align-items-start pt-3">
+                          <img src="<?= site_url()?>dist/images/63457.png" class="img-fluid rounded-circle w-100" alt="...">
+                        </div>
+                        <!-- user comment -->
+                        <div class="col-10">
+                          <div class="card-body px-0">
+                            <div class="border rounded p-2">
+                              <h5 class="card-title small">Card title</h5>
+                              <p class="card-text small">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              <p class="card-text">
+                                <small class="text-muted">
+                                  Last updated 3 mins ago
+                                </small>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-3 text-center p-2">
+                      <!-- link to a modal containing comments -->
+                      <a href="#" class="link-dark">See more comments...</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- create comment form -->
+            <div class="card-footer border-0 p-4">
+              <div class="row g-2 align-items-center justify-content-center">
+                <div class="col-lg-2 d-none d-lg-flex d-flex justify-content-center">                  
+                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+                </div>
+                <div class="col-12 col-lg-10">                  
+                  <?= form_open('create_comment') ?>
+                  <?= csrf_field() ?>
+                  <div class="input-group border rounded">  
+                    <div class="input-group-text border-0 bg-white"><i class="far fa-comment-dots"></i></div>
+                    <input type="text" name="comment" id="comment" class="form-control border-0" placeholder="Place your comment here...">
+                    <input type="submit" value="Comment" class="border-0 btn btn-outline-dark">
+                  </div>
+                  <?= form_close() ?>
+                </div>
+              </div>
             </div>
           </div>
         </div>

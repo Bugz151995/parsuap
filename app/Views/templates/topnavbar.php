@@ -62,7 +62,7 @@
 
         <!-- notifications,messages, and search alumni -->
         <div class="row mx-0 g-4 pe-2">
-          <div class="col-auto d-flex align-items-center">
+          <div class="col-auto d-flex align-items-center d-none d-sm-flex">
             <!-- searchbar for large screen -->
             <div class="d-none d-sm-block">
               <div class="input-group input-group-sm">
@@ -75,7 +75,7 @@
 
           <!-- searchbar toggle for small screen -->
           <div class="col-auto d-flex align-items-center d-block d-sm-none">
-            <button type="button" id="__search_sm_toggle_btn" class="btn btn-outline-light btn-sm d-block d-sm-none dropdown-toggle">Search</button>
+            <button type="button" id="__search_sm_toggle_btn" class="btn btn-outline-light btn-sm d-block d-sm-none dropdown-toggle"><i class="fas fa-search"></i></button>
           </div>
 
           <div class="col-auto d-flex align-items-center">
@@ -137,106 +137,104 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-5">
-        <form>
-          <div class="row mb-5 justify-content-center">
-            <div class="col-3">
-              <img src="<?= site_url()?>dist/images/63457.png" class="img-fluid" alt="">
-            </div>
-            <div class="col-auto d-flex align-items-center"> 
-              <h5 class="display-6 fw-bold">              
-                <?= session()->get('firstname') ?>
+        <div class="row mb-5 justify-content-center">
+          <div class="col-3">
+            <img src="<?= site_url()?>dist/images/63457.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-auto d-flex align-items-center"> 
+            <h5 class="display-6 fw-bold">              
+              <?= session()->get('firstname') ?>
 
-                <?php if(session()->get('middlename')): ?>
-                  <?= substr(session()->get('middlename'), 0, 1).'.' ?>
-                <?php endif ?>
+              <?php if(session()->get('middlename')): ?>
+                <?= substr(session()->get('middlename'), 0, 1).'.' ?>
+              <?php endif ?>
 
-                <?= session()->get('lastname') ?>
-              </h5>
+              <?= session()->get('lastname') ?>
+            </h5>
+          </div>
+        </div>
+        
+        <!-- education -->
+        <div class="mb-1">
+          <label for="education" class="col-form-label fw-bold">Education</label>
+        </div>
+        <div class="mb-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-graduation-cap fa-fw me-2"></i>
+              <h7 class="modal-title" id="createPostLabel">
+                <span class="text-danger">no data from database yet join query</span>
+              </h7>
             </div>
           </div>
-          
-          <!-- education -->
-          <div class="mb-1">
-            <label for="education" class="col-form-label fw-bold">Education</label>
-          </div>
-          <div class="mb-1">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="col-auto">
-                <i class="fas fa-graduation-cap fa-fw me-2"></i>
-                <h7 class="modal-title" id="createPostLabel">
-                  <span class="text-danger">no data from database yet join query</span>
-                </h7>
-              </div>
-            </div>
-          </div>
+        </div>
 
-          <!-- address -->
-          <div class="mb-1">
-            <label for="Places Lived" class="col-form-label fw-bold mt-3">My Address</label>
-          </div>
-          <div class="mb-1">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="col-auto">
-                <i class="fas fa-map-marker-alt fa-fw me-2"></i>
-                <h7 class="modal-title" id="createPostLabel">
-                  <span class="text-danger">no data from database yet join query</span>
-                </h7>
-              </div>
+        <!-- address -->
+        <div class="mb-1">
+          <label for="Places Lived" class="col-form-label fw-bold mt-3">My Address</label>
+        </div>
+        <div class="mb-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-map-marker-alt fa-fw me-2"></i>
+              <h7 class="modal-title" id="createPostLabel">
+                <span class="text-danger">no data from database yet join query</span>
+              </h7>
             </div>
           </div>
+        </div>
 
-          <!-- contact info -->
-          <div class="mb-1">
-            <label for="Places Lived" class="col-form-label fw-bold mt-3">Contact Info</label>
-          </div>
-          <div class="mb-1">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="col-auto">
-                <i class="fas fa-phone fa-fw me-2"></i>
-                <h7 class="modal-title" id="createPostLabel">
-                  <?= session()->get('cp_num') ?>
-                </h7>
-              </div>
+        <!-- contact info -->
+        <div class="mb-1">
+          <label for="Places Lived" class="col-form-label fw-bold mt-3">Contact Info</label>
+        </div>
+        <div class="mb-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-phone fa-fw me-2"></i>
+              <h7 class="modal-title" id="createPostLabel">
+                <?= session()->get('cp_num') ?>
+              </h7>
             </div>
           </div>
-          <div class="mb-1">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="col-auto">
-                <i class="fas fa-envelope-open-text fa-fw me-2"></i>
-                <h7 class="modal-title" id="createPostLabel">
-                  <?= session()->get('email') ?>
-                </h7>
-              </div>
+        </div>
+        <div class="mb-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-envelope-open-text fa-fw me-2"></i>
+              <h7 class="modal-title" id="createPostLabel">
+                <?= session()->get('email') ?>
+              </h7>
             </div>
           </div>
+        </div>
 
-          <!-- Gender -->
-          <div class="mb-1">
-            <label for="Places Lived" class="col-form-label fw-bold mt-3">Basic Info</label>
-          </div>
-          <div class="mb-1">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="col-auto">
-                <i class="fas fa-male fa-fw me-2"></i>
-                <h7 class="modal-title" id="createPostLabel">
-                  <?= session()->get('sex') ?>
-                </h7>
-              </div>
+        <!-- Gender -->
+        <div class="mb-1">
+          <label for="Places Lived" class="col-form-label fw-bold mt-3">Basic Info</label>
+        </div>
+        <div class="mb-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-male fa-fw me-2"></i>
+              <h7 class="modal-title" id="createPostLabel">
+                <?= session()->get('sex') ?>
+              </h7>
             </div>
           </div>
+        </div>
 
-          <!-- bday -->
-          <div class="mb-1">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="col-auto">
-                <i class="fas fa-birthday-cake fa-fw me-2"></i>
-                <h7 class="modal-title" id="createPostLabel">
-                  <?= session()->get('birthdate') ?>
-                </h7>
-              </div>
+        <!-- bday -->
+        <div class="mb-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-birthday-cake fa-fw me-2"></i>
+              <h7 class="modal-title" id="createPostLabel">
+                <?= session()->get('birthdate') ?>
+              </h7>
             </div>
-          </div>          
-        </form>
+          </div>
+        </div> 
       </div>
       <div class="modal-footer">
         <a href="<?= site_url()?>account" class="btn">See more about your self</a>
