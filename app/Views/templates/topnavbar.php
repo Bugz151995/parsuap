@@ -65,17 +65,17 @@
           <div class="col-auto d-flex align-items-center d-none d-sm-flex">
             <!-- searchbar for large screen -->
             <div class="d-none d-sm-block">
-              <div class="input-group input-group-sm">
-                <div class="input-group-text border-0 bg-white" id="toggle_search"><i class="fas fa-search"></i></div>
+              <div class="input-group input-group-sm rounded-pill border bg-white">
+                <div class="input-group-text border-0 bg-white rounded-pill" id="toggle_search"><i class="fas fa-search"></i></div>
                 <input type="search" name="search" id="search" class="form-control form-control-sm border-0" placeholder="Search Alumni...">
-                <input type="submit" value="Search" class="btn btn-outline-light btn-sm">
+                <input type="submit" value="Search" class="btn btn-outline-dark border-0 btn-sm rounded-pill">
               </div>
             </div>
           </div>
 
           <!-- searchbar toggle for small screen -->
           <div class="col-auto d-flex align-items-center d-block d-sm-none">
-            <button type="button" id="__search_sm_toggle_btn" class="btn btn-outline-light btn-sm d-block d-sm-none dropdown-toggle"><i class="fas fa-search"></i></button>
+            <button type="button" id="__search_sm_toggle_btn" class="btn btn-outline-light btn-sm d-block d-sm-none dropdown-toggle rounded-pill"><i class="fas fa-search"></i></button>
           </div>
 
           <div class="col-auto d-flex align-items-center">
@@ -127,6 +127,28 @@
     </div>
   </div>
 </header>
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1030; margin-top: 5rem!important">
+    <!-- Then put toasts within -->
+    <div class="toast alert-success" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header text-success">
+        <?php if(session()->getTempData('success')): ?>
+          <strong><i class="fas fa-check-circle fa-fw me-2"></i></strong>
+          <strong class="me-auto">Success</strong>
+        <?php endif ?>
+        <?php if(session()->getTempData('error')): ?>
+          <strong><i class="fas fa-check-circle fa-fw me-2"></i></strong>
+          <strong class="me-auto">Error</strong>
+        <?php endif ?>
+        <small class="text-muted">just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        <?php if(session()->getTempData('msg')): ?>
+          <?= session()->getTempData('msg') ?>
+        <?php endif ?>
+      </div>
+    </div>
+  </div>
 
 <!-- modal -->
 <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="profileLabel" aria-hidden="true">

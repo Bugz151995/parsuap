@@ -6,5 +6,13 @@
   <script src="<?= site_url()?>dist/js/toggle_searchbar.js"></script>
   <script src="<?= site_url()?>dist/js/create_post_autoresize.js"></script>
   <script src="<?= site_url()?>dist/js/preview_image.js"></script>
+  <script src="<?= site_url()?>dist/js/pagination.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    <?php if(session()->getTempData('success')  || session()->getTempData('error')):?>
+    new bootstrap.Toast(document.querySelector('.toast')).show();
+    <?php endif?>
+  });
+</script>
 </body>
 </html>

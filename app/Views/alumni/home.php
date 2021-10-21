@@ -59,11 +59,11 @@
           <div class="mb-3">
             <img src="https://dummyimage.com/400x400/8a8a8a/b5b5b5&text=Image+Preview" alt="" id="img_preview" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover">
           </div>
-          <div class="mt-5">
+          <div class="mt-4 mb-3">
             <div class="d-flex justify-content-between align-items-center">
               <div class="col-auto">
                 <input type="file" name="file" id="file" class="inputfile" />
-                <label for="file" class="btn btn-outline-primary btn-sm">
+                <label for="file" class="btn btn-outline-primary">
                   <i class="fas fa-camera fa fw- me-2"></i>Attach an Image...
                 </label>
               </div>
@@ -88,7 +88,7 @@
               <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
             </div>
             <div class="col-auto">
-              <button type="button" class="btn btn-outline-secondary px-5 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#createPost" data-bs-whatever="@mdo">
+              <button type="button" class="btn btn-outline-primary px-5 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#createPost" data-bs-whatever="@mdo">
                 <i class="far fa-edit me-2"></i>Create New Post
               </button>
             </div>  
@@ -136,9 +136,9 @@
                 </h2>
 
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#commentsAcc">
-                  <div class="accordion-body p-0">
+                  <div class="accordion-body bg-light p-0">
                     <!-- comment -->
-                    <div class="card border-0 mb-3 px-3">
+                    <div class="card border-0 bg-light mb-3 px-3">
                       <div class="row g-3">
                         <!-- user profile -->
                         <div class="col-2 d-flex justify-content-center align-items-start pt-3">
@@ -147,7 +147,7 @@
                         <!-- user comment -->
                         <div class="col-10">
                           <div class="card-body px-0">
-                            <div class="border rounded p-2">
+                            <div class="border rounded bg-white shadow-sm p-2">
                               <h5 class="card-title small">Card title</h5>
                               <p class="card-text small">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               <p class="card-text">
@@ -170,7 +170,7 @@
             </div>
 
             <!-- create comment form -->
-            <div class="card-footer border-0 p-4">
+            <div class="card-footer bg-white border-0 p-4">
               <div class="row g-2 align-items-center justify-content-center">
                 <div class="col-lg-2 d-none d-lg-flex d-flex justify-content-center">                  
                   <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
@@ -178,9 +178,9 @@
                 <div class="col-12 col-lg-10">                  
                   <?= form_open('create_comment') ?>
                   <?= csrf_field() ?>
-                  <div class="input-group border rounded">  
-                    <div class="input-group-text border-0 bg-white"><i class="far fa-comment-dots"></i></div>
-                    <input type="text" name="comment" id="comment" class="form-control border-0" placeholder="Place your comment here...">
+                  <div class="input-group border rounded bg-light">  
+                    <div class="input-group-text border-0 bg-light"><i class="far fa-comment-dots"></i></div>
+                    <input type="text" name="comment" id="comment" class="form-control bg-light border-0" placeholder="Place your comment here...">
                     <input type="submit" value="Comment" class="border-0 btn btn-outline-dark">
                   </div>
                   <?= form_close() ?>
@@ -193,3 +193,10 @@
     </div>
   </section>
 </main>
+
+<!-- call the preview image function -->
+<script>
+  document.addEventListener('DOMContentLoaded', ()=> {
+    previewImg('file', 'img_preview');
+  });
+</script>

@@ -15,13 +15,13 @@
     <!-- profile picture -->
     <div class="row g-4 m-0 justify-content-center px-4 px-lg-4">
       <div class="col-auto mt-0">
-        <div class="border bg-white rounded">
-          <div class="row g-4 m-0 mb-5 justify-content-center">
-            <div class="col-3">
+        <div class="border alert-primary rounded p-4">
+          <div class="row g-3 m-0 justify-content-center align-items-center">
+            <div class="col-3 mt-0">
               <img src="<?= site_url()?>dist/images/63457.png" class="img-fluid" alt="">
             </div>
-            <div class="col-auto d-flex align-items-center"> 
-              <h5 class="display-6 fw-bold">              
+            <div class="col-auto mt-0 d-flex flex-column justify-content-center"> 
+              <h6 class="display-6 h6 fw-bold text-center text-sm-start">
                 <?= session()->get('firstname') ?>
 
                 <?php if(session()->get('middlename')): ?>
@@ -29,9 +29,66 @@
                 <?php endif ?>
 
                 <?= session()->get('lastname') ?>
-              </h5>
+              </h6>
+              <div class="col-auto">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#changeImage" data-bs-whatever="@mdo">
+                  <i class="fas fa-camera-retro me-2"></i>Change Profile Picture
+                </button>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- change profile picture modal -->
+    <div class="modal fade" id="changeImage" tabindex="-1" aria-labelledby="changeImageLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="col-auto row align-items-center">
+              <div class="col-auto">
+                <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+              </div>
+              <div class="col-auto">
+                <div class="d-flex flex-column">
+                  <label for="message-text" class="fw-bold">
+                    <?= session()->get('firstname') ?>
+
+                    <?php if(session()->get('middlename')): ?>
+                      <?= substr(session()->get('middlename'), 0, 1).'.' ?>
+                    <?php endif ?>
+
+                    <?= session()->get('lastname') ?>
+                  </label>
+                  <span class="fst-italic">Change Profile Picture</span>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- create post form -->
+          <?= form_open('account/update_image') ?>
+            <?= csrf_field() ?>
+          <div class="modal-body">
+            <div class="mb-3">
+              <img src="https://dummyimage.com/400x400/8a8a8a/b5b5b5&text=Image+Preview" alt="" id="pr_pic_preview" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover">
+            </div>
+            <div class="mt-4 mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="col-auto">
+                  <input type="file" name="pr_pic" id="pr_pic" class="inputfile" />
+                  <label for="pr_pic" class="btn btn-outline-primary">
+                    <i class="fas fa-camera fa fw- me-2"></i>Select an Image...
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary w-100 rounded-pill">Save</button>
+          </div>
+          <?= form_close() ?>
         </div>
       </div>
     </div>
@@ -153,11 +210,6 @@
                 <input type="text" name="d" id="display_name" disabled value="<?= set_value('author', $fullname)?>" class="form-control">
                 <?= form_hidden('author', session()->get('alumni_id')) ?>
               </div>
-              
-              <div class="mb-3">
-                <label for="other_author" class="col-form-label"><span class="text-danger me-2">*</span>Co-Author</label>
-                <input type="text" name="other_author" id="other_author" class="form-control" value="<?= set_value('other_author')?>" placeholder="Input the co-author here...">
-              </div>
 
               <div class="mt-5 mb-3">
                 <div class="d-flex justify-content-start align-items-center">
@@ -203,14 +255,94 @@
       </div>
     </section>
 
+    <!-- edit profile modal -->
+    <div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="col-auto row align-items-center">
+              <div class="col-auto">
+                <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+              </div>
+              <div class="col-auto">
+                <div class="d-flex flex-column">
+                  <label for="message-text" class="fw-bold">
+                    <?= session()->get('firstname') ?>
+
+                    <?php if(session()->get('middlename')): ?>
+                      <?= substr(session()->get('middlename'), 0, 1).'.' ?>
+                    <?php endif ?>
+
+                    <?= session()->get('lastname') ?>
+                  </label>
+                  <span class="fst-italic">Edit Profile</span>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- upload research form -->
+          <?= form_open('account/edit') ?>
+          <?= csrf_field() ?>
+            <div class="modal-body px-4">
+              <div class="mb-3">
+                <label for="fname" class="col-form-label"><span class="text-danger me-2">*</span>Firstname</label>
+                <input type="text" name="fname" id="fname" class="form-control fw-bold" value="<?= set_value('fname', session()->get('firstname'))?>" placeholder="Input your Firstname here...">
+              </div>
+
+              <div class="mb-3">
+                <label for="mname" class="col-form-label"><span class="text-danger me-2">*</span>Middlename</label>
+                <input type="text" name="mname" id="mname" class="form-control fw-bold" value="<?= set_value('mname', session()->get('middlename'))?>" placeholder="Input your Middlename here...">
+              </div>
+
+              <div class="mb-3">
+                <label for="lname" class="col-form-label"><span class="text-danger me-2">*</span>Lastname</label>
+                <input type="text" name="lname" id="lname" class="form-control fw-bold" value="<?= set_value('lname', session()->get('lastname'))?>" placeholder="Input your Lastname here...">
+              </div>
+
+              <div class="mb-3">
+                <label for="cp" class="col-form-label"><span class="text-danger me-2">*</span>Contact Number</label>
+                <input type="text" name="cp" id="cp" class="form-control fw-bold" value="<?= set_value('cp', session()->get('cp_num'))?>" placeholder="Input your Contact Number here...">
+              </div>
+              
+              <div class="mb-3">
+                <label for="email" class="col-form-label"><span class="text-danger me-2">*</span>Email Address</label>
+                <input type="text" name="email" id="email" class="form-control fw-bold" value="<?= set_value('email', session()->get('email'))?>" placeholder="Input your Email Address here...">
+              </div>
+              
+              <div class="mb-3">
+                <label for="sex" class="col-form-label"><span class="text-danger me-2">*</span>Gender</label>
+                <select name="sex" id="sex" class="form-select fw-bold">
+                  <option value="" selected disabled>Select a Gender</option>
+                  <option value="Male" <?= (session()->get('sex') == "Male") ? set_select('sex', session()->get('sex'), TRUE) : set_select('sex') ?>>Male</option>
+                  <option value="Female" <?= (session()->get('sex') == "Female") ? set_select('sex', session()->get('sex'), TRUE) : set_select('sex') ?>>Female</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="bday" class="col-form-label"><span class="text-danger me-2">*</span>Birthdate</label>
+                <input type="date" name="bday" id="bday" class="form-control fw-bold" value="<?= set_value('bday', session()->get('birthdate'))?>" placeholder="Input the co-author here...">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary w-100 rounded-pill">Save</button>
+            </div>
+          <?= form_close() ?>
+        </div>
+      </div>
+    </div>
+
+    <!-- about me and friend list -->
     <div class="row m-0 px-4 px-lg-4 g-3">
       <!-- about me -->
       <div class="col-xl-6 col-lg-7">
         <div class="bg-white border rounded">
           <div class="p-4 d-flex flex-column">  
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="lead fw-bold m-0">About Me</h4>
-              <a href="<?= site_url()?>friends/my_friends" class="btn btn-sm btn-outline-primary border-0"><i class="far fa-edit fa-fw"></i>Edit Profile</a>
+              <h4 class="lead fw-bold m-0">About Me</h4>              
+              <button type="button" class="btn btn-sm btn-outline-primary border-0" data-bs-toggle="modal" data-bs-target="#editProfile" data-bs-whatever="@mdo">
+                <i class="far fa-edit me-2"></i>Edit Profile
+              </button>
             </div>
 
             <div class="d-flex flex-column px-2">
@@ -223,7 +355,7 @@
                   <div class="col-auto">
                     <i class="fas fa-graduation-cap fa-fw me-2"></i>
                     <h7 class="modal-title" id="createPostLabel">
-                      <span class="text-danger text-wrap">no data from database yet join query</span>
+                      <span class="text-danger">no data join query</span>
                     </h7>
                   </div>
                 </div>
@@ -238,7 +370,7 @@
                   <div class="col-auto">
                     <i class="fas fa-map-marker-alt fa-fw me-2"></i>
                     <h7 class="modal-title" id="createPostLabel">
-                      <span class="text-danger text-wrap">no data from database yet join query</span>
+                      <span class="text-danger text-wrap">no data join query</span>
                     </h7>
                   </div>
                 </div>
@@ -451,9 +583,9 @@
                 </h2>
 
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#commentsAcc">
-                  <div class="accordion-body p-0">
+                  <div class="accordion-body bg-light p-0">
                     <!-- comment -->
-                    <div class="card border-0 mb-3 px-3">
+                    <div class="card border-0 bg-light mb-3 px-3">
                       <div class="row g-3">
                         <!-- user profile -->
                         <div class="col-2 d-flex justify-content-center align-items-start pt-3">
@@ -462,7 +594,7 @@
                         <!-- user comment -->
                         <div class="col-10">
                           <div class="card-body px-0">
-                            <div class="border rounded p-2">
+                            <div class="border rounded p-2 bg-white">
                               <h5 class="card-title small">Card title</h5>
                               <p class="card-text small">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               <p class="card-text">
@@ -485,7 +617,7 @@
             </div>
 
             <!-- create comment form -->
-            <div class="card-footer border-0 p-4">
+            <div class="card-footer bg-white border-0 border-top p-4">
               <div class="row g-2 align-items-center justify-content-center">
                 <div class="col-lg-2 d-none d-lg-flex d-flex justify-content-center">                  
                   <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
@@ -493,9 +625,9 @@
                 <div class="col-12 col-lg-10">                  
                   <?= form_open('create_comment') ?>
                   <?= csrf_field() ?>
-                  <div class="input-group border rounded">  
-                    <div class="input-group-text border-0 bg-white"><i class="far fa-comment-dots"></i></div>
-                    <input type="text" name="comment" id="comment" class="form-control border-0" placeholder="Place your comment here...">
+                  <div class="input-group border rounded bg-light">  
+                    <div class="input-group-text border-0 bg-light"><i class="far fa-comment-dots"></i></div>
+                    <input type="text" name="comment" id="comment" class="form-control border-0 bg-light" placeholder="Place your comment here...">
                     <input type="submit" value="Comment" class="border-0 btn btn-outline-dark">
                   </div>
                   <?= form_close() ?>
@@ -508,3 +640,11 @@
     </div>
   </section>
 </main>
+
+<!-- call the preview image function -->
+<script>
+  document.addEventListener('DOMContentLoaded', ()=> {
+    previewImg('pr_pic', 'pr_pic_preview');
+    previewImg('file', 'img_preview');
+  });
+</script>

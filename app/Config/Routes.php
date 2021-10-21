@@ -35,9 +35,15 @@ $routes->group('/', function($routes){
     $routes->get('home', 'Home::index', ['filter' => 'alumni_auth']);
     $routes->get('events', 'Event::index', ['filter' => 'alumni_auth']);
     $routes->get('friends', 'Friend::index', ['filter' => 'alumni_auth']);
-    $routes->get('archive', 'Archive::index', ['filter' => 'alumni_auth']);
-    $routes->get('forum', 'Forum::index', ['filter' => 'alumni_auth']);
+    $routes->get('archive', 'Archive::index', ['filter' => 'alumni_auth']);    
     $routes->get('account', 'Account::index', ['filter' => 'alumni_auth']);
+
+    $routes->group('forum', function($routes){
+        $routes->get('/', 'Forum::index', ['filter' => 'alumni_auth']);
+        $routes->get('topic/(:num)', 'Forum::viewTopic/$1', ['filter' => 'alumni_auth']);
+        $routes->post('create_topic', 'Forum::createTopic', ['filter' => 'alumni_auth']);
+        $routes->post('topic/create_post', 'Forum::createPost', ['filter' => 'alumni_auth']);
+    });
 
     $routes->post('login', 'Alumni::login');
     $routes->get('logout', 'Alumni::logout');
