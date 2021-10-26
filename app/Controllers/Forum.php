@@ -4,156 +4,138 @@ namespace App\Controllers;
 
 use App\Models\AlumniModel;
 use App\Models\ForumModel;
-use App\Models\TopicPostModel;
+use App\Models\ForumPostModel;
 use CodeIgniter\I18n\Time;
 
-class Forum extends BaseController {
-  public function index() {
+class Forum extends BaseController 
+{
+  /**
+   * Display a listing of the topics.
+   *
+   * @return Views/alumni/forum/forum
+   */
+  public function index() 
+  {
     helper('form');
     $uri = service('uri');
-    $f = new ForumModel();
-    $tp = new TopicPostModel();
-    $data['page'] = $uri->getSegment(1);
-    $myTime = new Time('now', 'Asia/Manila');
+    $f   = new ForumModel();
+    $fp  = new ForumPostModel();
 
-    $data['topics'] = $f->join('alumni', 'alumni.alumni_id = forum.alumni_id')
-                        ->orderBy('created_at', 'DESC')
-                        ->paginate(8); 
-                        
-    $data['posts'] = $f->selectCount('topic_posts.forum_id', 'count')
-                       ->join('alumni', 'alumni.alumni_id = forum.alumni_id')
-                       ->join('topic_posts', 'topic_posts.forum_id = forum.forum_id')
-                       ->orderBy('created_at', 'DESC')
-                       ->groupBy('forum.forum_id')
-                       ->get()->getResult();  
-    $data['pager'] = $f->pager;
-    $data['now'] = $myTime;
-
-    echo view('templates/header');
-    echo view('templates/topnavbar', $data);
-    echo view('alumni/forum/forum');
-    echo view('templates/end_document');
-  }
-
-  public function viewTopic($forum_id) {
-    helper('form');
-    $uri = service('uri');
-    $f = new ForumModel();
-    $tp = new TopicPostModel();
-    $myTime = new Time('now', 'Asia/Manila');
-    $data['page'] = $uri->getSegment(1);
-    $data['posts'] = $tp->where(['forum_id' => esc($forum_id)])
-                        ->join('alumni', 'alumni.alumni_id = topic_posts.alumni_id')
-                        ->orderBy('posted_at', 'DESC')
-                        ->paginate(5);    
-    $data['pager'] = $tp->pager;  
-    $data['topic'] = $f->select('topic, forum_id')->getWhere(['forum_id' => esc($forum_id)])->getRow();
-    $data['now'] = $myTime;
-
-    echo view('templates/header');
-    echo view('templates/topnavbar', $data);
-    echo view('alumni/forum/topic');
-    echo view('templates/end_document');
-  }
-
-  public function createPost() {
-    helper('form');
-    $uri = service('uri');
-    $f = new ForumModel();
-    $tp = new TopicPostModel();
-    $myTime = new Time('now', 'Asia/Manila');
-    $rules = [
-      'post' => [
-        'label' => 'Post',
-        'rules' => 'required'
-      ],
+    $data = [
+      'page'   => $uri->getSegment(1),
+      'topics' => $f->getTopics(),
+      'posts'  => $fp->getTotalPost(),
+      'pager'  => $f->pager,
+      'now'    => new Time('now', 'Asia/Manila')                                        
     ];
 
-    if(!$this->validate($rules)){    
-      $data['page'] = $uri->getSegment(1);
-      $data['posts'] = $tp->where(['forum_id' => esc($this->request->getPost('f'))])
-                          ->join('alumni', 'alumni.alumni_id = topic_posts.alumni_id')
-                          ->orderBy('posted_at', 'DESC')
-                          ->paginate(4);    
-      $data['pager'] = $tp->pager;  
-      $data['topic'] = $f->select('topic, forum_id')->getWhere(['forum_id' => esc($this->request->getPost('f'))])->getRow();
-      $data['now'] = $myTime;
-      $data['validation'] = $this->validator;
-      $data['cp_1'] = true; // create post modal is true
+    echo view('templates/header');
+    echo view('templates/navbar', $data);
+    echo view('alumni/forum/topic');
+    echo view('templates/main_footer');
+  } 
 
-      echo view('templates/header');
-      echo view('templates/topnavbar', $data);
-      echo view('alumni/forum/topic');
-      echo view('templates/end_document');
-    } else {
+  /**
+   * Display a specified topic.
+   *
+   * @param int $forum_id
+   * @return Views/alumni/forum/post
+   */
+  public function viewPosts($forum_id) 
+  {
+    helper('form');
+    $uri = service('uri');
+    $f   = new ForumModel();
+    $fp  = new ForumPostModel();
+
+    $data = [
+      'page'  => $uri->getSegment(1),
+      'topic' => $f->getTopic($forum_id),
+      'posts' => $fp->getPosts($forum_id),
+      'pager' => $fp->pager,
+      'now'   => new Time('now', 'Asia/Manila')                                        
+    ];
+
+    echo view('templates/header');
+    echo view('templates/navbar', $data);
+    echo view('alumni/forum/post');
+    echo view('templates/main_footer');
+  }
+
+  /**
+   * Create a post in a specified topic.
+   *
+   * @return Views/alumni/forum/post
+   */
+  public function createPost() 
+  {
+    $validation = \Config\Services::validation();
+    helper('form');
+    $uri = service('uri');
+    $f   = new ForumModel();
+    $fp  = new ForumPostModel();
+
+    if(!$this->validate($validation->getRuleGroup('forum_topic')))
+    { 
+      session()->setTempData('warning', TRUE, 1);
+      session()->setTempData('msg', 'Please don\'t leave a blank field in the Create Post form.', 1);
+      return redirect()->to('forum/topic/'.esc($this->request->getPost('f')));
+    } 
+    else 
+    {
       $t_post = [
         'post'      => esc($this->request->getPost('post')),
-        'post_code' => esc('PC-'.strtotime($myTime)),
+        'post_code' => esc('PC-'.strtotime(new Time('now', 'Asia/Manila'))),
         'alumni_id' => session()->get('alumni_id'),
         'forum_id'  => esc($this->request->getPost('f')),
       ];
 
-      $tp->save($t_post);
+      $fp->save($t_post);
       session()->setTempData('success', TRUE, 3);
       session()->setTempData('msg', 'Your Post was successfully saved!', 3);
       return redirect()->to('forum/topic/'.esc($this->request->getPost('f')));
     }
   }
 
-  public function createTopic() {
+  /**
+   * Create a topic.
+   *
+   * @return Views/alumni/forum/topic
+   */
+  public function createTopic() 
+  {
+    $validation = \Config\Services::validation();
     helper('form');
     $uri = service('uri');
     $f = new ForumModel();
-    $tp = new TopicPostModel();
-    $myTime = new Time('now', 'Asia/Manila');
-    $rules = [
-      'topic' => [
-        'label' => 'Topic',
-        'rules' => 'required'
-      ],
-      'post' => [
-        'label' => 'Post',
-        'rules' => 'required'
-      ],
-    ];
+    $fp = new ForumPostModel();
 
-    if(!$this->validate($rules)){      
-      $data['page'] = $uri->getSegment(1);
-      $myTime = new Time('now', 'Asia/Manila');
-
-      $data['topics'] = $f->join('alumni', 'alumni.alumni_id = forum.alumni_id')
-                          ->join('topic_posts', 'topic_posts.forum_id = forum.forum_id', 'left')
-                          ->paginate(8);
-      $data['pager'] = $f->pager;
-      $data['now'] = $myTime;
-      $data['validation'] = $this->validator;
-      $data['ct_1'] = true; // create topic modal is true
-
-      echo view('templates/header');
-      echo view('templates/topnavbar', $data);
-      echo view('alumni/forum/forum');
-      echo view('templates/end_document');
-    } else {
-      $forum = [
+    if(!$this->validate($validation->getRuleGroup('forum_topic')))
+    { 
+      session()->setTempData('warning', TRUE, 1);
+      session()->setTempData('msg', 'Please don\'t leave a blank field in the create topic form.', 1);
+      return redirect()->to('forum');
+    } 
+    else 
+    {
+      $forum_topic = [
         'topic'     => esc($this->request->getPost('topic')),
         'status'    => 0,
         'alumni_id' => session()->get('alumni_id'),
       ];
 
-      $f->save($forum);
-
-      $forum_id = $f->insertID();
+      $f->save($forum_topic);
 
       $t_post = [
         'post'      => esc($this->request->getPost('post')),
-        'post_code' => esc('PC-'.strtotime($myTime)),
+        'post_code' => esc('PC-'.strtotime(new Time('now', 'Asia/Manila'))),
         'alumni_id' => session()->get('alumni_id'),
-        'forum_id'  => $forum_id,
+        'forum_id'  => $f->insertID(),
       ];
 
-      $tp->save($t_post);
-      session()->setTempData('success', TRUE, 3);
-      session()->setTempData('msg', 'The Topic was successfully added!', 3);
+      $fp->save($t_post);
+      session()->setTempData('success', TRUE, 1);
+      session()->setTempData('msg', 'The Topic was successfully added!', 1);
       return redirect()->to('forum');
     }
   }

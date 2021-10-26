@@ -5,8 +5,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><i class="fas fa-home fa-fw me-1"></i></li>
         <li class="breadcrumb-item"><a href="<?= site_url()?>home" class="link-dark text-decoration-none">Home</a></li>
-        <li class="breadcrumb-item"><a href="<?= site_url()?>forum" class="link-dark text-decoration-none">Forum</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Topic#</li>
+        <li class="breadcrumb-item" aria-current="page">Forum</li>
       </ol>
     </nav>
   </section>
@@ -23,28 +22,27 @@
             <div class="col-auto">
               <div class="d-flex flex-column">
                 <label for="message-text" class="fw-bold">
-                  <?= session()->get('firstname') ?>
-
-                  <?php if(session()->get('middlename')): ?>
-                    <?= substr(session()->get('middlename'), 0, 1).'.' ?>
-                  <?php endif ?>
-
-                  <?= session()->get('lastname') ?>
+                  <?= session()->get('fname') ?>
+                  <?= session()->get('lname') ?>
                 </label>
-                <span class="fst-italic">Create Post</span>
+                <span class="fst-italic">Create Topic</span>
               </div>
             </div>
           </div>
-          <a href="<?= site_url()?>forum/topic/<?= $topic->forum_id?>" role="button" class="btn-close"  aria-label="Close"></a>
+          <a href="<?= site_url()?>forum" role="button" class="btn-close"  aria-label="Close"></a>
         </div>
 
-        <?= form_open('forum/topic/create_post') ?>
+        <?= form_open('forum/create_topic') ?>
         <?= csrf_field() ?>
         <div class="modal-body">
           <div class="mb-3">
-            <label for="topic" class="col-form-label">Topic</label>
-            <input type="text" class="form-control fw-bold" disabled name="topic" id="topic" placeholder="Input the Topic here..." value="<?= set_value('topic', $topic->topic)?>">
-            <?= form_hidden('f', esc($topic->forum_id)) ?> 
+            <label for="topic" class="col-form-label"><span class="text-danger me-2">*</span>Topic</label>
+            <input type="text" class="form-control" name="topic" id="topic" placeholder="Input the Topic here...">
+            <?php if(isset($validation) && $validation->getError('topic')): ?>
+              <span class="text-danger fst-italic small">
+                <i class="fas fa-exclamation-triangle fa fw me-2"></i><?= $validation->getError('topic') ?>
+              </span>
+            <?php endif?> 
           </div>
 
           <div class="mb-3">
@@ -68,65 +66,70 @@
 
   <!-- paginated forum -->
   <section class="container px-4 mb-5">
-    <h4 class="h5 mb-5 fst-italic">Topic: 
-      "<span><?= $topic->topic?></span>"
-    </h4>
-    
     <div class="d-flex justify-content-between align-items-start mb-4">
       <!-- Button trigger modal -->
-      <button type="button" id="createPostBtn" class="px-4 btn btn-outline-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#createTopic">
-        <i class="fas fa-plus-circle me-2 fa-fw"></i>Create Post
+      <button type="button" id="createTopicBtn" class="px-4 btn btn-outline-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#createTopic">
+        <i class="fas fa-plus-circle me-2 fa-fw"></i>Create Topic
       </button>
       <?= $pager->links(); ?>
     </div>
 
-    <table class="table-bordered table table-secondary table-striped">
-      <thead class="table-secondary">
+    <table class="table table-bordered table-light table-striped align-middle">
+      <thead>
         <tr>
-          <th>
-            <div class="row">
-              <div class="col-3 text-center">Alumni</div>
-              <div class="col-9">Posts</div>
-            </div>
-          </th>
+          <th>Topic</th>
+          <th>Posts</th>
+          <th>Posted at</th>
         </tr>
       </thead>
 
       <tbody>
-        <?php foreach ($posts as $key => $post) :?>
+        <?php foreach ($topics as $key => $topic) :?>
         <tr>
-          <td colspan="2">
-            <div class="row justify-content-between">
-              <div class="col-6">
-                <span class="fst-italic">                  
-                  <?php $post_date = $now->parse($post['posted_at']) ?>
-                  <?= $post_date->format('M d, Y h:i:s a') ?>
-                </span>
-              </div>
-              <div class="col-6 text-end">
-                <span class="fst-italic">
-                  #<?= $post['post_code'] ?>
-                </span>
+          <td>
+            <div class="d-flex flex-column">
+              <a href="<?= site_url()?>forum/topic/<?= $topic['forum_id']?>" class="link-primary small mb-2">
+                <?= $topic['topic'] ?>
+              </a>
+              <div class="row g-1 small">
+                <div class="col-auto">
+                  <span class="small">Posted by:</span>
+                </div>
+                <div class="col-auto small">
+                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 15px; height: 15px: object-fit: contain" alt=""> 
+                  <span class="small align-middle">
+                    <?= $topic['fname'] ?>
+                  </span>
+                </div>
               </div>
             </div>
           </td>
-        </tr>
-
-        <tr>
-          <td colspan="2">
-            <div class="row p-2">
-              <div class="col-3 justify-content-center">  
-                <div class="d-flex flex-column align-items-center">
-                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
-                  <small>
-                    <?= $post['firstname'] ?>
-                  </small>
-                </div>
+          <td>
+            <?php $count = 0 ?>
+            <?php foreach ($posts as $key => $post) :?>
+            <?php if($topic['forum_id'] == $post->forum_id && $post->post !== NULL): ?>
+              <?php $count++ ?>
+            <?php endif ?>
+            <?php endforeach ?>
+            <?= $count ?>
+          </td>
+          <td>
+            <div class="d-flex flex-column">              
+              <div class="small">
+                <?php $post_date = $now->parse($topic['created_at']) ?>
+                <?= $post_date->humanize() ?>
               </div>
-              <div class="col-9">
-                <p class="small">
-                  <?= $post['post'] ?>
-                </p>
+              <div class="row g-1 small">
+                <div class="col-auto small">
+                  <span class="align-middle pb-1">Status:</span>
+                </div>
+                <div class="col-auto small">
+                  <?php if($topic['status'] == 0): ?>
+                    <span class="badge bg-success align-middle">Open</span>
+                  <?php else: ?>
+                    <span class="badge bg-danger align-middle">Closed</span>
+                  <?php endif ?>
+                </div>
               </div>
             </div>
           </td>
@@ -144,9 +147,9 @@
 <!-- script enable modal -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const cpBtn = document.getElementById('createPostBtn');
-    <?php if(isset($cp_1) && $cp_1):?>
-      cpBtn.click();
+    const ctBtn = document.getElementById('createTopicBtn');
+    <?php if(isset($ct_1) && $ct_1):?>
+      ctBtn.click();
     <?php endif?>
   });
 </script>

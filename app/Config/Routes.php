@@ -32,21 +32,32 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->group('/', function($routes){
-    $routes->get('home', 'Home::index', ['filter' => 'alumni_auth']);
-    $routes->get('events', 'Event::index', ['filter' => 'alumni_auth']);
-    $routes->get('friends', 'Friend::index', ['filter' => 'alumni_auth']);
-    $routes->get('archive', 'Archive::index', ['filter' => 'alumni_auth']);    
-    $routes->get('account', 'Account::index', ['filter' => 'alumni_auth']);
-
-    $routes->group('forum', function($routes){
-        $routes->get('/', 'Forum::index', ['filter' => 'alumni_auth']);
-        $routes->get('topic/(:num)', 'Forum::viewTopic/$1', ['filter' => 'alumni_auth']);
-        $routes->post('create_topic', 'Forum::createTopic', ['filter' => 'alumni_auth']);
-        $routes->post('topic/create_post', 'Forum::createPost', ['filter' => 'alumni_auth']);
-    });
-
     $routes->post('login', 'Alumni::login');
     $routes->get('logout', 'Alumni::logout');
+    $routes->get('home', 'Home::index');
+    $routes->get('events', 'Event::index');
+    $routes->get('friends', 'Friend::index');
+    $routes->get('archive', 'Archive::index');
+    $routes->get('account', 'Account::index');
+
+    $routes->group('forum', function($routes){
+        $routes->get('/', 'Forum::index');
+        $routes->get('topic/(:num)', 'Forum::viewPosts/$1');
+        $routes->post('create_topic', 'Forum::createTopic');
+        $routes->post('topic/create_post', 'Forum::createPost');
+    });
+
+    $routes->group('registration', function($routes){
+        $routes->get('(:segment)', 'Registration::view/$1');
+        $routes->post('getName', 'Registration::getName');
+        $routes->post('getBatchType', 'Registration::getBatchType');
+        $routes->post('getBatchYear', 'Registration::getBatchYear');
+        $routes->post('getBirthdate', 'Registration::getBirthdate');
+        $routes->post('getGender', 'Registration::getGender');
+        $routes->post('getEmail', 'Registration::getEmail');
+        $routes->post('getPassword', 'Registration::getPassword');
+        $routes->get('account/submit', 'Alumni::createAccount');
+    });    
 });
 
 /*

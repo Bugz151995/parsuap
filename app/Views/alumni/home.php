@@ -14,12 +14,24 @@
 
   <!-- breadcrumb -->
   <section class="container py-4 px-4 px-lg-5">
-    <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='9'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><i class="fas fa-home fa-fw me-1"></i></li>
-        <li class="breadcrumb-item active" aria-current="page">Home</li>
-      </ol>
-    </nav>
+    <div class="d-flex justify-content-between">
+      <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='9'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><i class="fas fa-home fa-fw me-1"></i></li>
+          <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+      </nav>
+      <div class="d-flex gap-3 align-items-center alert-primary px-3 p-2 rounded rounded-3 shadow-sm">
+        <div class="col-auto">
+          <img src="<?= site_url()?>dist/images/63457.png" class="profile-pic" alt=""> 
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-sm btn-outline-primary text-start text-lg-center px-5 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#createPost" data-bs-whatever="@mdo">
+            <i class="far fa-edit me-2"></i>Create New Post
+          </button>
+        </div> 
+      </div>
+    </div>
   </section>
 
   <!-- create post modal -->
@@ -34,13 +46,8 @@
             <div class="col-auto">
               <div class="d-flex flex-column">
                 <label for="message-text" class="fw-bold">
-                  <?= session()->get('firstname') ?>
-
-                  <?php if(session()->get('middlename')): ?>
-                    <?= substr(session()->get('middlename'), 0, 1).'.' ?>
-                  <?php endif ?>
-
-                  <?= session()->get('lastname') ?>
+                  <?= session()->getFlashdata('fname') ?>
+                  <?= session()->getFlashdata('lname') ?>
                 </label>
                 <span class="fst-italic">Create New Post</span>
               </div>
@@ -78,33 +85,13 @@
     </div>
   </div>
 
-  <!-- Create post trigger -->
-  <section class="mb-4 pt-4 bg-white">
-    <div class="container">
-      <div class="row justify-content-center align-items-center">
-        <div class="col-10 col-lg-7 rounded rounded-3 p-3 alert-primary shadow-sm">
-          <div class="row g-3 align-items-center justify-content-center">
-            <div class="col-auto">
-              <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
-            </div>
-            <div class="col-auto">
-              <button type="button" class="btn btn-outline-primary px-5 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#createPost" data-bs-whatever="@mdo">
-                <i class="far fa-edit me-2"></i>Create New Post
-              </button>
-            </div>  
-          </div>          
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- list of post latest to old -->
   <section class="mb-5">
     <div class="container p-4 px-lg-5">
       <div class="row g-3 justify-content-center">
-        <div class="col-12 col-lg-10">
-          <div class="card mb-3 border-0 shadow-sm">
-            <img src="https://dummyimage.com/600x400/8a8a8a/b5b5b5" class="card-img-top" alt="...">
+        <div class="col-12">
+          <div class="card mb-3 border-0 shadow-sm rounded rounded-3">
+            <img src="<?= site_url()?>dist/images/default_img.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title h6">
                 <i class="fas fa-user-circle fa-fw me-2"></i>

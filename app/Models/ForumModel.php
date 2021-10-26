@@ -15,4 +15,16 @@ class ForumModel extends Model {
     'status',
     'alumni_id'
   ];
+
+  public function getTopic($id) {
+    return $this->select('topic, forum_id')
+                ->getWhere(['forum_id' => esc($id)])
+                ->getRow();
+  }
+
+  public function getTopics() {
+    return $this->join('alumni', 'alumni.alumni_id = forum.alumni_id')
+                ->orderBy('created_at', 'DESC')
+                ->paginate(8);
+  }
 }
