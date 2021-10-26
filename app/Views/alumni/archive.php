@@ -32,7 +32,6 @@
       </div>
       <?= form_close() ?> 
     </div>
-
     <hr>    
   </div>     
    <!-- Archive -->
@@ -42,7 +41,7 @@
         <div class="bg-white border rounded">
           <div class="p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
-              <h4 class="lead fw-bold m-0">Archive</h4>
+              <h4 class="lead fw-bold m-0">Research</h4>
             </div>
               <!-- Archive -->
             <div class="card">
