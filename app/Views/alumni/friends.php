@@ -17,29 +17,94 @@
         <div class="bg-white border rounded">
           <div class="p-4">
             <div class="row g-3 justify-content-between align-items-center mb-4">
-              <h4 class="col-auto lead fw-bold m-0">Friendlist</h4>
+              <h4 class="col-auto lead fw-bold m-0">Friend List</h4>
               <div class="col-auto px-3">       
                 <div class="input-group rounded-pill border"> 
                   <div class="input-group-text rounded-pill border-0 bg-white"><i class="fas fa-search"></i></div>
-                    <input type="search" name="search" id="search" class="form-control border-0" placeholder="Search Archive...">
+                    <input type="search" name="search" id="search" class="form-control border-0" placeholder="Search Friend...">
                     <input type="submit" value="Search" class="btn btn-outline-secondary rounded-pill">
                   </div>
                 </div>
-              </div>   
-              <div class="col-auto px-3">
-                <div class="dropdown">
-                  <button class="btn btn-outline-secondary rounded-pill px-3" type="button" id="AllFriendsBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-sliders-h fa-fw me-2"></i>All Friends
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="filterBtn">
-                    <li><a class="dropdown-item" href="<?= site_url()?>archive/filter/latest">Latest</a></li>
-                    <li><a class="dropdown-item" href="<?= site_url()?>archive/filter/oldest">Oldest</a></li>
-                  </ul>
+              </div>    
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-secondary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <i class="fas fa-users"></i>Suggestions
+              </button>
+              <button type="button" class="btn btn-secondary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <i class="fas fa-users"></i>All Friends
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">People You May Know</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                      <div class="modal-body">
+                          <?php for($i=0;$i<6;$i++):?>
+                          <div class="col-sm-13">
+                            <div class="card mb-3 px-4">
+                              <div class="row g-0">
+                                <div class="col-3">
+                                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 80px; height: 50px:" alt=""> 
+                                </div>
+                                <div class="col-9">
+                                  <div class="card-body">
+                                    <h6 class="card-title">Peter Doe</6>
+                                    <p>
+                                    <div class="col-autho mb-3">
+                                        <button class="btn btn-outline-primary px-3"> Add Friend</button>
+                                        <button class="btn btn-outline-secondary px-3"> Remove</button>  
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <?php endfor?>
+                      </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary-link">see more</button>
+                    </div>
+                  </div>
                 </div>
-              </div> 
+              </div>
+
+
+
+
+
+
+              <hr>
+              <h4 class="col-auto lead fw-bold m-0">Friend Requests</h4>
+              <button type="button" class="btn btn-link">see more</button>
+              <div class="row">
+                <?php for($i=0;$i<6;$i++):?>
+                <div class="col-sm-6">
+                  <div class="card mb-2 p-3">
+                    <div class="row g-0">
+                      <div class="col-3">
+                        <img src="<?= site_url()?>dist/images/63457.png" style="width: 80px; height: 50px:" alt=""> 
+                      </div>
+                      <div class="col-9">
+                        <div class="card-body">
+                          <h6 class="card-title">Peter Doe</6>
+                          <p>
+                          <div class="col-autho">
+                              <button class="btn btn-outline-secondary px-2"><i class="fas fa-"></i> confirm</button>  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <?php endfor?>
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </section>
 </main>
