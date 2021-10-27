@@ -92,7 +92,7 @@
   font-family: var(--sidebar-font);
   width: 280px;
   position: fixed;
-  background-image: url("http://parsuap.ph/dist/images/diagonals.jpg");
+  background-image: url("http://parsuap.ph/assets/images/diagonals.jpg");
   object-fit: contain;
   top: 65px;
   left: -280px;
@@ -179,7 +179,7 @@ nav.nav > .nav-link:hover {
 }
 
 #__home_bg {
-  background-image: linear-gradient(to bottom, rgba(2, 61, 150, 0.8), rgba(13, 109, 253, 0.2)), url("http://parsuap.ph/dist/images/psu_bg.jpg");
+  background-image: linear-gradient(to bottom, rgba(2, 61, 150, 0.8), rgba(13, 109, 253, 0.2)), url("http://parsuap.ph/assets/images/psu_bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
