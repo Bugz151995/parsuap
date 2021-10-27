@@ -1,0 +1,288 @@
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-brand {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.school-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.img-footer {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+#__login-wrapper {
+  height: calc(90vh - 106px);
+}
+
+#__login-form {
+  height: calc(100% - 106px);
+}
+
+.login-form-border {
+  border-color: #e5bd20;
+}
+
+#__login-topnavbar {
+  background-color: #000080;
+  margin-bottom: 5.5rem;
+}
+
+.topnavbar {
+  background: linear-gradient(to left, #000080, #2c2cf0);
+}
+
+#__login-title {
+  font-family: var(--headings-font);
+}
+
+#__login-title-divider {
+  color: #e5bd20;
+}
+
+.school-name {
+  font-family: var(--headings-font);
+}
+
+.form-title {
+  font-family: var(--headings-font);
+}
+
+.form-field {
+  font-family: var(--form-font);
+}
+
+.form-btn {
+  font-family: var(--form-font);
+}
+
+.footer > div{
+  font-family: var(--footer-font);
+}
+
+.user-profile {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* SIDEBAR */
+#__sidebar-toggle-icon {
+  transition: 0.5s ease-in-out;
+}
+
+#__sidebar {
+  font-family: var(--sidebar-font);
+  width: 280px;
+  position: fixed;
+  background-image: url("http://parsuap.ph/dist/images/diagonals.jpg");
+  object-fit: contain;
+  top: 65px;
+  left: -280px;
+  height: calc(100vh - 65px);
+  z-index: 1010;
+  transition: 0.25s ease-in-out;
+  overflow-x: hidden;
+  overflow-y: auto
+}
+
+#__sidebar-background {
+  height: calc(100vh - 50px);
+  width: 100%;
+  position: fixed;
+  background-color: #2d2e2e67;
+  top: 65px;
+  left: 0;
+  z-index: 901;
+}
+
+nav.nav > .nav-link:hover {
+  background-color: #0d6efd;
+  color: #f8f9fa!important;
+}
+
+#__main-content {
+  position: relative;
+  transition: 0.25s ease-in-out;
+  width: 100%;
+  left: 0;
+  top: 65px;
+}
+
+#__topnavbar {
+  height: 65px;
+}
+
+#user_modal_btn {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+#search_sm {
+  position: fixed;
+  top: -65px;
+  width: 100%;
+  z-index: 1009;
+  transition: top 0.5s ease-in-out;
+}
+
+#search_sm_transparent_bg {
+  background-color: rgba(52, 16, 255, 0.7);
+}
+
+#search_sm.toggled {  
+  position: fixed;
+  top: 65px;
+  width: 100%;
+  z-index: 1009;
+  transition: top 0.5s ease-in-out;
+}
+
+@media only screen and (min-width: 992px) {
+  #__sidebar {
+    font-family: var(--sidebar-font);
+    width: 280px;
+    position: fixed;
+    background-color: #ffffff;
+    top: 65px;
+    left: 0px;
+    height: calc(100vh - 65px);
+    z-index: 1010;
+    overflow-x: hidden;
+    overflow-y: auto
+  }
+
+  #__main-content {
+    position: relative;
+    width: calc(100% - 280px);
+    left: 280px;
+    top: 65px;
+  }
+}
+
+#__home_bg {
+  background-image: linear-gradient(to bottom, rgba(2, 61, 150, 0.8), rgba(13, 109, 253, 0.2)), url("http://parsuap.ph/dist/images/psu_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* home custom file input */
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+  display: inline-block;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+/* toast btn close color */
+#closeToastBtn {
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat
+}
+
+/* registration progress bar animation */
+@keyframes page_1 {
+  from {width: 0%;}
+  to {width: 14%;}
+}
+@keyframes page_2 {
+  from {width: 14%;}
+  to {width: 28%;}
+}
+@keyframes page_3 {
+  from {width: 28%;}
+  to {width: 42%;}
+}
+@keyframes page_4 {
+  from {width: 42%;}
+  to {width: 56%;}
+}
+@keyframes page_5 {
+  from {width: 56%;}
+  to {width: 70%;}
+}
+@keyframes page_6 {
+  from {width: 70%;}
+  to {width: 84%;}
+}
+@keyframes page_7 {
+  from {width: 84%;}
+  to {width: 100%;}
+}
+
+#page_1 {
+  animation-name: page_1;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+#page_2 {
+  animation-name: page_2;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+#page_3 {
+  animation-name: page_3;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+#page_4 {
+  animation-name: page_4;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+#page_5 {
+  animation-name: page_5;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+#page_6 {
+  animation-name: page_6;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+#page_7 {
+  animation-name: page_7;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+/* account */
+.cover-photo {
+  height: 300px;
+  object-fit: cover;
+  filter: brightness(.6);
+}
+
+.account-profile {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+}
