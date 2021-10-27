@@ -85,7 +85,7 @@
       </button>
       <nav class="w-100 d-flex justify-content-between">
         <a href="<?= site_url()?>home" class="navbar-brand p-0 d-flex align-items-center">
-          <img src="<?= site_url()?>dist/images/PSU-logo-vector.png" class="school-logo p-2 d-none d-lg-block" alt="partido state university logo">
+          <img src="<?= site_url()?>assets/images/PSU-logo-vector.png" class="school-logo p-2 d-none d-lg-block" alt="partido state university logo">
           <span class="school-name d-none d-lg-inline-block h6 align-middle text-uppercase text-light text-shadow fw-bold mb-0">ParSU Alumni Portal</span>
         </a>
 
@@ -195,7 +195,7 @@
                   <a class="dropdown-item rounded rounded-3 p-2" href="<?= site_url()?>">
                     <div class="d-flex gap-3 align-items-center position-relative">
                       <div class="col-auto">
-                        <img src="<?= site_url()?>dist/images/63457.png" class="profile-pic" alt="">
+                        <img src="<?= site_url()?>assets/images/63457.png" class="profile-pic" alt="">
                       </div>
                       <div class="col">
                         <h2 class="fw-bold h6 mb-0">              
@@ -230,7 +230,7 @@
           <div class="col-auto d-flex align-items-center">
             <div class="btn-group dropdown">
               <button type="button" class="btn p-0 rounded-circle" id="profileDropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                <img src="<?= site_url()?>dist/images/63457.png" alt="" class="profile-pic" id="user_modal_btn">
+                <img src="<?= site_url()?>assets/images/63457.png" alt="" class="profile-pic" id="user_modal_btn">
               </button>
 
               <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end p-2">
@@ -238,7 +238,7 @@
                   <a class="dropdown-item rounded rounded-3" href="<?= site_url()?>account">
                     <div class="d-flex gap-3 align-items-center">
                       <div class="col-auto">
-                        <img src="<?= site_url()?>dist/images/63457.png" class="profile-pic" alt="">
+                        <img src="<?= site_url()?>assets/images/63457.png" class="profile-pic" alt="">
                       </div>
                       <div class="col">
                         <h2 class="fw-bold h-1 mb-0">              

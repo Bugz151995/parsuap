@@ -4,7 +4,7 @@
   <section class="mb-3">
     <!-- profile picture -->
     <div class="card border-0">
-      <img src="<?= site_url()?>dist/images/3968687.jpg" class="cover-photo" alt="...">
+      <img src="<?= site_url()?>assets/images/3968687.jpg" class="cover-photo" alt="...">
       <div class="card-img-overlay pt-5">
         <div class="d-flex m-0 gap-3 justify-content-center align-items-center pt-5 mt-5">
           <div class="mt-0">
@@ -400,7 +400,7 @@
             <div class="row row-cols-2 row-cols-lg-2 row-cols-xl-3 g-3 px-2">
               <div class="col">
                 <div class="card border-0">
-                  <img src="<?= site_url()?>dist/images/3968682.jpg" class="rounded card-img-top" alt="...">
+                  <img src="<?= site_url()?>assets/images/3968682.jpg" class="rounded card-img-top" alt="...">
                   <div class="card-text">
                     <h5 class="card-title small">Ryan Czar Abugao</h5>
                   </div>
@@ -408,7 +408,7 @@
               </div>
               <div class="col">
                 <div class="card border-0">
-                  <img src="<?= site_url()?>dist/images/3968682.jpg" class="rounded card-img-top" alt="...">
+                  <img src="<?= site_url()?>assets/images/3968682.jpg" class="rounded card-img-top" alt="...">
                   <div class="card-text">
                     <h5 class="card-title small">Ryan Czar Abugao</h5>
                   </div>
@@ -416,7 +416,7 @@
               </div>
               <div class="col">
                 <div class="card border-0">
-                  <img src="<?= site_url()?>dist/images/3968682.jpg" class="rounded card-img-top" alt="...">
+                  <img src="<?= site_url()?>assets/images/3968682.jpg" class="rounded card-img-top" alt="...">
                   <div class="card-text">
                     <h5 class="card-title small">Ryan Czar Abugao</h5>
                   </div>
@@ -424,7 +424,7 @@
               </div>
               <div class="col">
                 <div class="card border-0">
-                  <img src="<?= site_url()?>dist/images/3968682.jpg" class="rounded card-img-top" alt="...">
+                  <img src="<?= site_url()?>assets/images/3968682.jpg" class="rounded card-img-top" alt="...">
                   <div class="card-text">
                     <h5 class="card-title small">Ryan Czar Abugao</h5>
                   </div>
@@ -556,7 +556,7 @@
                       <div class="row g-3">
                         <!-- user profile -->
                         <div class="col-2 d-flex justify-content-center align-items-start pt-3">
-                          <img src="<?= site_url()?>dist/images/63457.png" class="img-fluid rounded-circle w-100" alt="...">
+                          <img src="<?= site_url()?>assets/images/63457.png" class="img-fluid rounded-circle w-100" alt="...">
                         </div>
                         <!-- user comment -->
                         <div class="col-10">
@@ -587,7 +587,7 @@
             <div class="card-footer bg-white border-0 border-top p-4">
               <div class="row g-2 align-items-center justify-content-center">
                 <div class="col-lg-2 d-none d-lg-flex d-flex justify-content-center">                  
-                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+                  <img src="<?= site_url()?>assets/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
                 </div>
                 <div class="col-12 col-lg-10">                  
                   <?= form_open('create_comment') ?>

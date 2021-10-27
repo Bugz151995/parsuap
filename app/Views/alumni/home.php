@@ -23,7 +23,7 @@
       </nav>
       <div class="d-flex gap-3 align-items-center alert-primary px-3 p-2 rounded rounded-3 shadow-sm">
         <div class="col-auto">
-          <img src="<?= site_url()?>dist/images/63457.png" class="profile-pic" alt=""> 
+          <img src="<?= site_url()?>assets/images/63457.png" class="profile-pic" alt=""> 
         </div>
         <div class="col-auto">
           <button type="button" class="btn btn-sm btn-outline-primary text-start text-lg-center px-5 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#createPost" data-bs-whatever="@mdo">
@@ -41,7 +41,7 @@
         <div class="modal-header">
           <div class="col-auto row align-items-center">
             <div class="col-auto">
-              <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+              <img src="<?= site_url()?>assets/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
             </div>
             <div class="col-auto">
               <div class="d-flex flex-column">
@@ -91,7 +91,7 @@
       <div class="row g-3 justify-content-center">
         <div class="col-12">
           <div class="card mb-3 border-0 shadow-sm rounded rounded-3">
-            <img src="<?= site_url()?>dist/images/default_img.png" class="card-img-top" alt="...">
+            <img src="<?= site_url()?>assets/images/default_img.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title h6">
                 <i class="fas fa-user-circle fa-fw me-2"></i>
@@ -129,7 +129,7 @@
                       <div class="row g-3">
                         <!-- user profile -->
                         <div class="col-2 d-flex justify-content-center align-items-start pt-3">
-                          <img src="<?= site_url()?>dist/images/63457.png" class="img-fluid rounded-circle w-100" alt="...">
+                          <img src="<?= site_url()?>assets/images/63457.png" class="img-fluid rounded-circle w-100" alt="...">
                         </div>
                         <!-- user comment -->
                         <div class="col-10">
@@ -160,7 +160,7 @@
             <div class="card-footer bg-white border-0 p-4">
               <div class="row g-2 align-items-center justify-content-center">
                 <div class="col-lg-2 d-none d-lg-flex d-flex justify-content-center">                  
-                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+                  <img src="<?= site_url()?>assets/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
                 </div>
                 <div class="col-12 col-lg-10">                  
                   <?= form_open('create_comment') ?>

@@ -47,7 +47,7 @@
                             <div class="card mb-3 px-4">
                               <div class="row g-0">
                                 <div class="col-3">
-                                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 80px; height: 50px:" alt=""> 
+                                  <img src="<?= site_url()?>assets/images/63457.png" style="width: 80px; height: 50px:" alt=""> 
                                 </div>
                                 <div class="col-9">
                                   <div class="card-body">
@@ -85,7 +85,7 @@
                   <div class="card mb-2 p-3">
                     <div class="row g-0">
                       <div class="col-3">
-                        <img src="<?= site_url()?>dist/images/63457.png" style="width: 80px; height: 50px:" alt=""> 
+                        <img src="<?= site_url()?>assets/images/63457.png" style="width: 80px; height: 50px:" alt=""> 
                       </div>
                       <div class="col-9">
                         <div class="card-body">

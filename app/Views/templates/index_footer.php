@@ -7,10 +7,10 @@
   <!-- Moment Js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
   <!-- Year Picker Js -->
-  <script src="<?=site_url()?>dist/js/yearpicker.js"></script>
-  <script src="<?=site_url()?>dist/js/year_picker_init.js"></script>
-  <script src="<?=site_url()?>dist/js/toggle_visibility.js"></script>
+  <script src="<?=site_url()?>assets/js/yearpicker.js"></script>
+  <script src="<?=site_url()?>assets/js/year_picker_init.js"></script>
+  <script src="<?=site_url()?>assets/js/toggle_visibility.js"></script>
 
-  <script src="<?= site_url()?>dist/js/show_modal.js"></script>
+  <script src="<?= site_url()?>assets/js/show_modal.js"></script>
 </body>
 </html>

@@ -4,12 +4,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>  
-  <script src="<?= site_url()?>dist/js/toggle_sidebar.js"></script>
-  <script src="<?= site_url()?>dist/js/toggle_searchbar.js"></script>
-  <script src="<?= site_url()?>dist/js/create_post_autoresize.js"></script>
-  <script src="<?= site_url()?>dist/js/preview_image.js"></script>
-  <script src="<?= site_url()?>dist/js/pagination.js"></script>
-  <script src="<?= site_url()?>dist/js/show_toast.js"></script>
+  <script src="<?= site_url()?>assets/js/toggle_sidebar.js"></script>
+  <script src="<?= site_url()?>assets/js/toggle_searchbar.js"></script>
+  <script src="<?= site_url()?>assets/js/create_post_autoresize.js"></script>
+  <script src="<?= site_url()?>assets/js/preview_image.js"></script>
+  <script src="<?= site_url()?>assets/js/pagination.js"></script>
+  <script src="<?= site_url()?>assets/js/show_toast.js"></script>
 
   <!-- call toast if something happens in the system -->
   <?php if(session()->getTempData('success')  || session()->getTempData('error') || session()->getTempData('warning')):?>

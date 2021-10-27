@@ -1,7 +1,7 @@
 <header id="__login-topnavbar" class="sticky-sm-top shadow">
   <div class="navbar d-flex justify-content-center">
     <a href="<?= site_url()?>" class="navbar-brand">
-      <img src="<?= site_url()?>dist/images/PSU-logo-vector.png" class="img-brand" alt="partido state university logo">
+      <img src="<?= site_url()?>assets/images/PSU-logo-vector.png" class="img-brand" alt="partido state university logo">
       <span class="school-name ms-2 h2 align-middle text-uppercase text-light text-shadow fw-bold">ParSU Alumni Portal</span>
     </a>
   </div>
@@ -11,7 +11,7 @@
     <div class="card shadow-sm rounded rounded-3 login-form-border mb-3 col-11 col-lg-12">
       <div class="row g-0">
         <div class="col-lg-7 d-none d-lg-block">
-          <img src="<?= site_url()?>dist/images/3968682.jpg" class="img-cover rounded" alt="...">
+          <img src="<?= site_url()?>assets/images/3968682.jpg" class="img-cover rounded" alt="...">
         </div>
         <div class="col-lg-5 p-4 d-flex align-items-center">
           <div class="card-body">
@@ -49,7 +49,7 @@
   <div class="row row-cols-1 m-0 row-cols-lg-2 g-5">
     <div class="col">
       <a href="<?= site_url()?>" class="navbar-brand justify-content-center justify-content-lg-start w-100 d-flex">
-        <img src="<?= site_url()?>dist/images/PSU-logo-vector.png" class="img-footer" alt="partido state university logo">
+        <img src="<?= site_url()?>assets/images/PSU-logo-vector.png" class="img-footer" alt="partido state university logo">
         <span class="school-name ms-2 h5 align-self-center text-dark text-uppercase fw-bold">Partido State University</span>
       </a>
       <ul class="list-group list-group-flush mt-2 mt-lg-4 text-center text-lg-start">
@@ -129,7 +129,7 @@
   </div>
 </div>
 
-<script src="<?= site_url()?>dist/js/show_toast.js"></script>
+<script src="<?= site_url()?>assets/js/show_toast.js"></script>
 <!-- call toast if something happens in the system -->
 <?php if(session()->getTempData('info')):?>
   <script>

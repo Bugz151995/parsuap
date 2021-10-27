@@ -18,7 +18,7 @@
         <div class="modal-header">
           <div class="col-auto row align-items-center">
             <div class="col-auto">
-              <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+              <img src="<?= site_url()?>assets/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
             </div>
             <div class="col-auto">
               <div class="d-flex flex-column">
@@ -112,7 +112,7 @@
             <div class="row p-2">
               <div class="col-3 justify-content-center">  
                 <div class="d-flex flex-column align-items-center">
-                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+                  <img src="<?= site_url()?>assets/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
                   <small>
                     <?= $post['fname'] ?>
                   </small>

@@ -17,7 +17,7 @@
         <div class="modal-header">
           <div class="col-auto row align-items-center">
             <div class="col-auto">
-              <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+              <img src="<?= site_url()?>assets/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
             </div>
             <div class="col-auto">
               <div class="d-flex flex-column">
@@ -96,7 +96,7 @@
                   <span class="small">Posted by:</span>
                 </div>
                 <div class="col-auto small">
-                  <img src="<?= site_url()?>dist/images/63457.png" style="width: 15px; height: 15px: object-fit: contain" alt=""> 
+                  <img src="<?= site_url()?>assets/images/63457.png" style="width: 15px; height: 15px: object-fit: contain" alt=""> 
                   <span class="small align-middle">
                     <?= $topic['fname'] ?>
                   </span>

@@ -47,7 +47,7 @@
             <div class="card">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img src="<?= site_url()?>dist/images/5289619.jpg" class="img-fluid w-100" alt="...">
+                  <img src="<?= site_url()?>assets/images/5289619.jpg" class="img-fluid w-100" alt="...">
                 </div>
                 <div class="col">
               <div class="card">
