@@ -5,13 +5,12 @@
     <nav class="nav flex-column small">
       <div class="navbar-brand row justify-content-center g-1 p-2 m-0 bg-light rounded rounded-3">
         <div class="col-3 d-flex justify-content-center align-items-center">
-          <img src="<?= site_url()?>dist/images/63457.png" alt="" class="profile-pic">
+          <img src="<?= session()->getFlashData('profile')?>" alt="" class="profile-pic">
         </div>
         <div class="col-9 d-flex justify-content-center align-items-center">
           <div class="small text-start">
             <h6 class="align-middle text-dark small fw-bold mb-1">
               <?= session()->getFlashData('fname') ?>
-              Czar
               <?= session()->getFlashData('lname') ?>
             </h6>
             <h6 class="align-middle small text-dark mb-0"><i class="fas fa-circle text-success fa-fw fa-xs"></i> <span class="small">Online</span></h6>
@@ -138,7 +137,7 @@
                   <a class="dropdown-item rounded rounded-3 p-2" href="<?= site_url()?>">
                     <div class="d-flex gap-3 align-items-center position-relative">
                       <div class="col-auto">
-                        <img src="<?= site_url()?>dist/images/63457.png" class="profile-pic" alt="">
+                        <img src="<?= session()->getFlashData('profile')?>" class="profile-pic" alt="">
                       </div>
                       <div class="col">
                         <h2 class="fw-bold h6 mb-0">              

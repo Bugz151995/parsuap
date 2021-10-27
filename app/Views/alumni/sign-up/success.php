@@ -14,7 +14,7 @@
             <h4 class="display-3 fw-bold text-success text-center">
               <i class="fas fa-check-circle fa-fw"></i>
             </h4>
-            <p class="lead text-success text-center fw-bold">Yay! You have successfully submitted your application.</p>
+            <p class="lead text-success text-center fw-bold">Yay! You have successfully submitted your registration.</p>
             <hr class="my-4">
             
             <p class="card-text">

@@ -12,7 +12,7 @@ class Forum extends BaseController
   /**
    * Display a listing of the topics.
    *
-   * @return Views/alumni/forum/forum
+   * @return mixed
    */
   public function index() 
   {
@@ -39,7 +39,7 @@ class Forum extends BaseController
    * Display a specified topic.
    *
    * @param int $forum_id
-   * @return Views/alumni/forum/post
+   * @return mixed
    */
   public function viewPosts($forum_id) 
   {
@@ -65,7 +65,7 @@ class Forum extends BaseController
   /**
    * Create a post in a specified topic.
    *
-   * @return Views/alumni/forum/post
+   * @return mixed
    */
   public function createPost() 
   {
@@ -100,7 +100,7 @@ class Forum extends BaseController
   /**
    * Create a topic.
    *
-   * @return Views/alumni/forum/topic
+   * @return mixed
    */
   public function createTopic() 
   {

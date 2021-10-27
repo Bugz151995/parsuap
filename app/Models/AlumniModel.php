@@ -11,6 +11,7 @@ class AlumniModel extends Model {
 
   protected $allowedFields = [
     'fname', 
+    'profile',
     'lname', 
     'birthdate', 
     'sex', 

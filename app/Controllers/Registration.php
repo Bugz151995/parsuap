@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\AlumniModel;
+use App\Models\BatchModel;
+use App\Models\AccRequestModel;
 
 class Registration extends BaseController 
 {
@@ -247,5 +249,80 @@ class Registration extends BaseController
       cache()->save('pass', $this->request->getPost('pass'), 900);
       return redirect()->to('registration/account/submit');
     }
+  }
+
+  /**
+   * Create Account request and Display success message.
+   *
+   * @return mixed
+   */
+  public function createAccount() 
+  {
+      helper('form');
+      $cache = \Config\Services::cache();
+      $a_model = new AlumniModel();
+      $r_model = new AccRequestModel();
+      $b_model = new BatchModel();
+
+      $alumni = [
+          'fname'     => esc($cache->get('fname')),
+          'lname'     => esc($cache->get('lname')),
+          'birthdate' => esc($cache->get('bday')),
+          'sex'       => esc($cache->get('sex')),
+          'email'     => esc($cache->get('email')),
+          'password'  => password_hash($cache->get('pass'), PASSWORD_DEFAULT)
+      ];
+
+      $account_created = $a_model->save($alumni);
+
+      $id = $a_model->insertID();
+
+      switch($cache->get('batch_type')) {
+        case 'college':
+          $batch_c = [
+            'batch_type' => esc($cache->get('batch_type')),
+            'batch_year' => esc($cache->get('c_year')),
+            'alumni_id' => esc($id)
+          ];
+          $b_model->save($batch_c);
+          break;
+        case 'high_school':
+          $batch_h = [
+            'batch_type' => esc($cache->get('batch_type')),
+            'batch_year' => esc($cache->get('h_year')),
+            'alumni_id' => esc($id)
+          ];
+          $b_model->save($batch_h);
+          break;
+        default:  
+          $batch_c = [
+            'batch_type' => esc($cache->get('batch_type')),
+            'batch_year' => esc($cache->get('c_year')),
+            'alumni_id' => esc($id)
+          ];
+          $b_model->save($batch_c);
+          $batch_h = [
+            'batch_type' => esc($cache->get('batch_type')),
+            'batch_year' => esc($cache->get('h_year')),
+            'alumni_id' => esc($id)
+          ];
+          $b_model->save($batch_h);
+          break;
+      }
+      
+      if ($account_created) 
+      {
+          $request = ['alumni_id' => $id];
+          $request_created = $r_model->save($request);
+
+          if ($request_created) 
+          {
+              $cache->clean();
+              echo view('templates/header');
+              echo view('alumni/login');
+              echo view('alumni/sign-up/success');
+              echo view('templates/index_footer');
+          }
+      }
   }
 }

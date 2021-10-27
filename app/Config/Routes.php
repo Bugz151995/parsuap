@@ -56,7 +56,7 @@ $routes->group('/', function($routes){
         $routes->post('getGender', 'Registration::getGender');
         $routes->post('getEmail', 'Registration::getEmail');
         $routes->post('getPassword', 'Registration::getPassword');
-        $routes->get('account/submit', 'Alumni::createAccount');
+        $routes->get('account/submit', 'Registration::createAccount');
     });    
 });
 

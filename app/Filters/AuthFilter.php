@@ -26,7 +26,7 @@ class AuthFilter implements FilterInterface
                 session()->setTempData('msg', 'Your account is being verified by our staff, Please wait for the email confirmation. Thank you!', 1);
                 return redirect()->to('/');
             }
-            $user_data = $a_model->find(session()->get('alumni_id'));
+            $user_data = $a_model->select('fname, lname, profile')->find(session()->get('alumni_id'));
             session()->setFlashData($user_data);
         }
     }

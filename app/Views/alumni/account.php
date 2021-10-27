@@ -1,40 +1,22 @@
 <main id="__main-content" class="bg-light">
-  <!-- breadcrumbs -->
-  <section class="container p-4 px-lg-4">
-    <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='9'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><i class="fas fa-home fa-fw me-1"></i></li>
-        <li class="breadcrumb-item"><a href="<?= site_url()?>home" class="link-dark text-decoration-none">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">My Account</li>
-      </ol>
-    </nav>
-  </section>
   
 <!-- My info -->
   <section class="mb-3">
     <!-- profile picture -->
-    <div class="row g-4 m-0 justify-content-center px-4 px-lg-4">
-      <div class="col-auto mt-0">
-        <div class="border alert-primary rounded p-4">
-          <div class="row g-3 m-0 justify-content-center align-items-center">
-            <div class="col-3 mt-0">
-              <img src="<?= site_url()?>dist/images/63457.png" class="img-fluid" alt="">
-            </div>
-            <div class="col-auto mt-0 d-flex flex-column justify-content-center"> 
-              <h6 class="display-6 h6 fw-bold text-center text-sm-start">
-                <?= session()->get('firstname') ?>
-
-                <?php if(session()->get('middlename')): ?>
-                  <?= substr(session()->get('middlename'), 0, 1).'.' ?>
-                <?php endif ?>
-
-                <?= session()->get('lastname') ?>
-              </h6>
-              <div class="col-auto">
-                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#changeImage" data-bs-whatever="@mdo">
-                  <i class="fas fa-camera-retro me-2"></i>Change Profile Picture
-                </button>
-              </div>
+    <div class="card border-0">
+      <img src="<?= site_url()?>dist/images/3968687.jpg" class="cover-photo" alt="...">
+      <div class="card-img-overlay pt-5">
+        <div class="d-flex m-0 gap-3 justify-content-center align-items-center pt-5 mt-5">
+          <div class="mt-0">
+            <img src="<?= session()->getFlashData('profile')?>" class="account-profile" alt="">
+          </div>
+          <div class="mt-0 w-100 d-flex flex-column justify-content-center"> 
+            <h6 class="me-auto display-6 h6 fw-bold text-center text-sm-start alert-primary text-dark p-1 rounded rounded-3 shadow">
+              <?= session()->get('fname') ?>
+              <?= session()->get('lname') ?>
+            </h6>
+            <div class="col-auto">
+              <button class="btn btn-outline-light shadow" data-bs-toggle="modal" data-bs-target="#changeImage" data-bs-whatever="@mdo"><i class="fas fa-camera-retro"></i></button>
             </div>
           </div>
         </div>
@@ -48,18 +30,13 @@
           <div class="modal-header">
             <div class="col-auto row align-items-center">
               <div class="col-auto">
-                <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+                <img src="<?= session()->getFlashData('profile')?>" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
               </div>
               <div class="col-auto">
                 <div class="d-flex flex-column">
                   <label for="message-text" class="fw-bold">
-                    <?= session()->get('firstname') ?>
-
-                    <?php if(session()->get('middlename')): ?>
-                      <?= substr(session()->get('middlename'), 0, 1).'.' ?>
-                    <?php endif ?>
-
-                    <?= session()->get('lastname') ?>
+                    <?= session()->get('fname') ?>
+                    <?= session()->get('lname') ?>
                   </label>
                   <span class="fst-italic">Change Profile Picture</span>
                 </div>
@@ -100,18 +77,13 @@
           <div class="modal-header">
             <div class="col-auto row align-items-center">
               <div class="col-auto">
-                <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+                <img src="<?= session()->getFlashData('profile')?>" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
               </div>
               <div class="col-auto">
                 <div class="d-flex flex-column">
                   <label for="message-text" class="fw-bold">
-                    <?= session()->get('firstname') ?>
-
-                    <?php if(session()->get('middlename')): ?>
-                      <?= substr(session()->get('middlename'), 0, 1).'.' ?>
-                    <?php endif ?>
-
-                    <?= session()->get('lastname') ?>
+                    <?= session()->get('fname') ?>
+                    <?= session()->get('lname') ?>
                   </label>
                   <span class="fst-italic">Create New Post</span>
                 </div>
@@ -156,18 +128,13 @@
           <div class="modal-header">
             <div class="col-auto row align-items-center">
               <div class="col-auto">
-                <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+                <img src="<?= session()->getFlashData('profile')?>" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
               </div>
               <div class="col-auto">
                 <div class="d-flex flex-column">
                   <label for="message-text" class="fw-bold">
-                    <?= session()->get('firstname') ?>
-
-                    <?php if(session()->get('middlename')): ?>
-                      <?= substr(session()->get('middlename'), 0, 1).'.' ?>
-                    <?php endif ?>
-
-                    <?= session()->get('lastname') ?>
+              <?= session()->get('fname') ?>
+              <?= session()->get('lname') ?>
                   </label>
                   <span class="fst-italic">Upload Research Paper</span>
                 </div>
@@ -236,20 +203,13 @@
         <div class="col">
           <div class="rounded rounded-3 p-3 alert-primary shadow-sm">
             <div class="d-flex gap-3 justify-content-center align-items-center">
-              <img src="<?= site_url()?>dist/images/63457.png" style="width: 40px; height: 40px: object-fit: contain" alt="">
+              <img src="<?= session()->getFlashData('profile')?>" style="width: 40px; height: 40px: object-fit: contain" alt="">
               <div class="col-auto">
                 <button type="button" class="btn btn-outline-primary px-3 px-xl-5 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#createPost" data-bs-whatever="@mdo">
                   <i class="far fa-edit me-2"></i>Create New Post
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="rounded rounded-3 p-3 alert-secondary shadow-sm d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-secondary px-5 rounded-pill" data-bs-toggle="modal" data-bs-target="#uploadResearch" data-bs-whatever="@mdo">
-              <i class="fas fa-upload me-2"></i>Upload Research
-            </button>
           </div>
         </div>
       </div>
@@ -262,18 +222,13 @@
           <div class="modal-header">
             <div class="col-auto row align-items-center">
               <div class="col-auto">
-                <img src="<?= site_url()?>dist/images/63457.png" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
+                <img src="<?= session()->getFlashData('profile')?>" style="width: 50px; height: 50px: object-fit: contain" alt=""> 
               </div>
               <div class="col-auto">
                 <div class="d-flex flex-column">
                   <label for="message-text" class="fw-bold">
-                    <?= session()->get('firstname') ?>
-
-                    <?php if(session()->get('middlename')): ?>
-                      <?= substr(session()->get('middlename'), 0, 1).'.' ?>
-                    <?php endif ?>
-
-                    <?= session()->get('lastname') ?>
+              <?= session()->get('fname') ?>
+              <?= session()->get('lname') ?>
                   </label>
                   <span class="fst-italic">Edit Profile</span>
                 </div>
@@ -483,7 +438,7 @@
   </section>
 
   <!-- Publish -->
-  <section class="mb-5">
+  <section class="mb-1">
     <div class="row justify-content-center align-items-center m-0 g-4 px-4 px-lg-4">
       <div class="col-12 m-0 p-2">
         <div class="bg-white border rounded p-4">
@@ -527,6 +482,18 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="mb-5">
+    <div class="row row-cols-1 row-cols-lg-2 m-0 px-lg-4 px-4 g-3">
+      <div class="col">
+        <div class="rounded rounded-3 p-3 alert-secondary shadow-sm d-flex justify-content-center">
+          <button type="button" class="btn btn-outline-secondary px-5 rounded-pill" data-bs-toggle="modal" data-bs-target="#uploadResearch" data-bs-whatever="@mdo">
+            <i class="fas fa-upload me-2"></i>Upload Research
+          </button>
         </div>
       </div>
     </div>
